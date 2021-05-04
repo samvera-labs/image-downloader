@@ -2,19 +2,26 @@
 
 JavaScript modules and a convenience React component which will force a jpeg download of an image URL. Built for the use case of needing to offer JPG downloads for images hosted via a IIIF image server.
 
-## Using the package
+## Getting Started
 
-First install the package:
+Install the package:
 
 ```
 npm install @samvera/image-downloader
+
+// or yarn
+yarn add @samvera/image-downloader
 ```
 
-And import the modules into your project:
+## Useage
+
+Import JavaScript modules into your project to use directly:
 
 ```
 import { makeBlob, mimicDownload } from "@samvera/image-downloader";
 ```
+
+or...
 
 ### React
 
@@ -31,15 +38,11 @@ import { ImageDownloader } from "@samvera/image-downloader";
 </ImageDownloader>
 ```
 
-For all `props` and usage examples, view the documentation
+For complete `props` and usage examples, [view the docs](https://samvera-labs.github.io/image-downloader/)
 
 ## Customizing
 
-You can customize the look and feel of the button. View documentation for examples.
-
-## Thanks to
-
-SVG Icons: https://codepen.io/aurer/pen/jEGbA
+You can customize the look and feel of the button. [View the docs](https://samvera-labs.github.io/image-downloader/)
 
 ## Authors
 
