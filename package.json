@@ -1,5 +1,5 @@
 {
-  "name": "image-downloader",
+  "name": "@samvera/image-downloader",
   "version": "1.0.0",
   "description": "React component and JavaScript modules to help force an image download in the browser",
   "main": "dist/image-downloader.cjs.js",
@@ -18,7 +18,9 @@
   },
   "keywords": [
     "Download image",
-    "Blob"
+    "Blob",
+    "IIIF",
+    "Samvera"
   ],
   "author": "",
   "license": "ISC",

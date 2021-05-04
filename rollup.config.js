@@ -27,7 +27,6 @@ let productionRollup = {
         react: "React",
         "react-dom": "ReactDOM",
         "svg-loaders-react": "svgLoadersReact",
-        "react-svg-loader!./download-icon.svg": "DownloadIcon",
       },
     },
   ],
@@ -44,10 +43,7 @@ let productionRollup = {
     cleaner({
       targets: ["./dist/"],
     }),
-    reactSvg({
-      // jsx: false,
-      // include: null,
-    }),
+    reactSvg({}),
     replace({
       preventAssignment: true,
       "process.env.NODE_ENV": JSON.stringify(NODE_ENV),
