@@ -25,6 +25,8 @@ let productionRollup = {
       globals: {
         react: "React",
         "react-dom": "ReactDOM",
+        "svg-loaders-react": "svgLoadersReact",
+        "react-svg-loader!./download-icon.svg": "DownloadIcon",
       },
     },
   ],
