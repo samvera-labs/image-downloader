@@ -2,6 +2,7 @@ const path = require("path");
 
 module.exports = {
   skipComponentsWithoutExample: true,
+  styleguideDir: "docs",
   webpackConfig: {
     module: {
       rules: [
