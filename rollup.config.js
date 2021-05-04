@@ -25,7 +25,6 @@ let productionRollup = {
       globals: {
         react: "React",
         "react-dom": "ReactDOM",
-        "@emotion/react": "ReactDOM",
       },
     },
   ],

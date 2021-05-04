@@ -110,28 +110,9 @@ export { default as AnotherComponent } from "./components/AnotherComponent/Anoth
 
 2. Update the `/package.json` file to customize for your project. Especially `namme, description, keywords, author`, etc.
 
-## Deployment
+## Thanks to
 
-### Bundling
-
-When ready to bundle your component, run:
-
-```
-yarn build
-```
-
-This will build a fresh copies of the package in the `/dist` folder. It will also build a fresh copy of the style guide in the `/styleguide` directory.
-
-### Push to NPM registry
-
-Here's how to publishing your package to NPM:
-https://docs.npmjs.com/cli/publish
-
-To publish your package:
-
-```
-npm publish
-```
+SVG Icons: https://codepen.io/aurer/pen/jEGbA
 
 ## Authors
 
