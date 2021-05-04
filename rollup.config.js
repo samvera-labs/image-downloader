@@ -45,8 +45,8 @@ let productionRollup = {
       targets: ["./dist/"],
     }),
     reactSvg({
-      jsx: false,
-      include: null,
+      // jsx: false,
+      // include: null,
     }),
     replace({
       preventAssignment: true,
