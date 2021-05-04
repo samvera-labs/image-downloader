@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import makeBlob from "../../lib/make-blob";
 import mimicDownload from "../../lib/mimic-download";
-import DownloadIcon from "react-svg-loader!./download-icon.svg";
+import DownloadIcon from "./download-icon.svg";
 import { Bars } from "svg-loaders-react";
 
 const ImageDownloader = ({

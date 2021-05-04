@@ -5,6 +5,7 @@ import cleaner from "rollup-plugin-cleaner";
 import replace from "@rollup/plugin-replace";
 import pkg from "./package.json";
 import { terser } from "rollup-plugin-terser";
+import reactSvg from "rollup-plugin-react-svg";
 
 const NODE_ENV = "production";
 
@@ -42,6 +43,10 @@ let productionRollup = {
     }),
     cleaner({
       targets: ["./dist/"],
+    }),
+    reactSvg({
+      jsx: false,
+      include: null,
     }),
     replace({
       preventAssignment: true,

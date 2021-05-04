@@ -1,16 +1,15 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('react'), require('react-svg-loader!./download-icon.svg'), require('svg-loaders-react')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'react', 'react-svg-loader!./download-icon.svg', 'svg-loaders-react'], factory) :
-  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.nulibAdminUIComponents = {}, global.React, global.DownloadIcon, global.svgLoadersReact));
-}(this, (function (exports, React, DownloadIcon, svgLoadersReact) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('react'), require('svg-loaders-react')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'react', 'svg-loaders-react'], factory) :
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.nulibAdminUIComponents = {}, global.React, global.svgLoadersReact));
+}(this, (function (exports, React, svgLoadersReact) { 'use strict';
 
   function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
   var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
-  var DownloadIcon__default = /*#__PURE__*/_interopDefaultLegacy(DownloadIcon);
 
-  function _extends() {
-    _extends = Object.assign || function (target) {
+  function _extends$1() {
+    _extends$1 = Object.assign || function (target) {
       for (var i = 1; i < arguments.length; i++) {
         var source = arguments[i];
 
@@ -24,7 +23,7 @@
       return target;
     };
 
-    return _extends.apply(this, arguments);
+    return _extends$1.apply(this, arguments);
   }
 
   function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
@@ -1057,6 +1056,19 @@
     document.body.removeChild(a);
   }
 
+  function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+  var DownloadIcon = (({
+    styles = {},
+    ...props
+  }) => /*#__PURE__*/React__default['default'].createElement("svg", _extends({
+    viewBox: "0 0 32 32",
+    xmlns: "http://www.w3.org/2000/svg"
+  }, props), /*#__PURE__*/React__default['default'].createElement("path", {
+    d: "M31 22a1 1 0 00-1 1v7H2v-7a1 1 0 00-2 0v8a1 1 0 001 1h30a1 1 0 001-1v-8a1 1 0 00-1-1z"
+  }), /*#__PURE__*/React__default['default'].createElement("path", {
+    d: "M15.27 23.707c.389.385 1.04.389 1.429 0l6.999-6.9a.993.993 0 000-1.414 1.016 1.016 0 00-1.428 0l-5.275 5.2V1c0-.552-.452-1-1.01-1s-1.01.448-1.01 1v19.593l-5.275-5.2a1.016 1.016 0 00-1.428 0 .992.992 0 000 1.414l6.998 6.9z"
+  })));
+
   var ImageDownloader = function ImageDownloader(_ref) {
     var imageUrl = _ref.imageUrl,
         imageTitle = _ref.imageTitle,
@@ -1116,7 +1128,7 @@
       return _handleClick.apply(this, arguments);
     }
 
-    return /*#__PURE__*/React__default['default'].createElement(React__default['default'].Fragment, null, /*#__PURE__*/React__default['default'].createElement("button", _extends({
+    return /*#__PURE__*/React__default['default'].createElement(React__default['default'].Fragment, null, /*#__PURE__*/React__default['default'].createElement("button", _extends$1({
       onClick: handleClick,
       disabled: loading
     }, restProps), /*#__PURE__*/React__default['default'].createElement("div", {
@@ -1129,7 +1141,7 @@
       fill: iconColor,
       height: "18px",
       width: "24px"
-    }) : /*#__PURE__*/React__default['default'].createElement(DownloadIcon__default['default'], {
+    }) : /*#__PURE__*/React__default['default'].createElement(DownloadIcon, {
       fill: iconColor,
       height: "18px",
       width: "18px"
