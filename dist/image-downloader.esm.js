@@ -60,7 +60,7 @@ function _arrayWithHoles(arr) {
 }
 
 function _iterableToArrayLimit(arr, i) {
-  var _i = arr && (typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]);
+  var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"];
 
   if (_i == null) return;
   var _arr = [];
@@ -150,10 +150,7 @@ function _objectWithoutProperties(source, excluded) {
   return target;
 }
 
-function createCommonjsModule(fn) {
-  var module = { exports: {} };
-	return fn(module, module.exports), module.exports;
-}
+var runtime = {exports: {}};
 
 /**
  * Copyright (c) 2014-present, Facebook, Inc.
@@ -162,7 +159,7 @@ function createCommonjsModule(fn) {
  * LICENSE file in the root directory of this source tree.
  */
 
-var runtime_1 = createCommonjsModule(function (module) {
+(function (module) {
 var runtime = (function (exports) {
 
   var Op = Object.prototype;
@@ -243,9 +240,9 @@ var runtime = (function (exports) {
   // This is a polyfill for %IteratorPrototype% for environments that
   // don't natively support it.
   var IteratorPrototype = {};
-  IteratorPrototype[iteratorSymbol] = function () {
+  define(IteratorPrototype, iteratorSymbol, function () {
     return this;
-  };
+  });
 
   var getProto = Object.getPrototypeOf;
   var NativeIteratorPrototype = getProto && getProto(getProto(values([])));
@@ -259,8 +256,9 @@ var runtime = (function (exports) {
 
   var Gp = GeneratorFunctionPrototype.prototype =
     Generator.prototype = Object.create(IteratorPrototype);
-  GeneratorFunction.prototype = Gp.constructor = GeneratorFunctionPrototype;
-  GeneratorFunctionPrototype.constructor = GeneratorFunction;
+  GeneratorFunction.prototype = GeneratorFunctionPrototype;
+  define(Gp, "constructor", GeneratorFunctionPrototype);
+  define(GeneratorFunctionPrototype, "constructor", GeneratorFunction);
   GeneratorFunction.displayName = define(
     GeneratorFunctionPrototype,
     toStringTagSymbol,
@@ -374,9 +372,9 @@ var runtime = (function (exports) {
   }
 
   defineIteratorMethods(AsyncIterator.prototype);
-  AsyncIterator.prototype[asyncIteratorSymbol] = function () {
+  define(AsyncIterator.prototype, asyncIteratorSymbol, function () {
     return this;
-  };
+  });
   exports.AsyncIterator = AsyncIterator;
 
   // Note that simple async functions are implemented on top of
@@ -569,13 +567,13 @@ var runtime = (function (exports) {
   // iterator prototype chain incorrectly implement this, causing the Generator
   // object to not be returned from this call. This ensures that doesn't happen.
   // See https://github.com/facebook/regenerator/issues/274 for more details.
-  Gp[iteratorSymbol] = function() {
+  define(Gp, iteratorSymbol, function() {
     return this;
-  };
+  });
 
-  Gp.toString = function() {
+  define(Gp, "toString", function() {
     return "[object Generator]";
-  };
+  });
 
   function pushTryEntry(locs) {
     var entry = { tryLoc: locs[0] };
@@ -894,29 +892,25 @@ try {
 } catch (accidentalStrictMode) {
   // This module should not be running in strict mode, so the above
   // assignment should always work unless something is misconfigured. Just
-  // in case runtime.js accidentally runs in strict mode, we can escape
+  // in case runtime.js accidentally runs in strict mode, in modern engines
+  // we can explicitly access globalThis. In older engines we can escape
   // strict mode using a global Function call. This could conceivably fail
   // if a Content Security Policy forbids using Function, but in that case
   // the proper solution is to fix the accidental strict mode problem. If
   // you've misconfigured your bundler to force strict mode and applied a
   // CSP to forbid Function, and you're not willing to fix either of those
   // problems, please detail your unique predicament in a GitHub issue.
-  Function("r", "regeneratorRuntime = r")(runtime);
+  if (typeof globalThis === "object") {
+    globalThis.regeneratorRuntime = runtime;
+  } else {
+    Function("r", "regeneratorRuntime = r")(runtime);
+  }
 }
-});
+}(runtime));
 
-var regenerator = runtime_1;
+var regenerator = runtime.exports;
 
-/**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
-var ReactPropTypesSecret = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
-
-var ReactPropTypesSecret_1 = ReactPropTypesSecret;
+var propTypes = {exports: {}};
 
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
@@ -925,7 +919,18 @@ var ReactPropTypesSecret_1 = ReactPropTypesSecret;
  * LICENSE file in the root directory of this source tree.
  */
 
+var ReactPropTypesSecret$1 = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
 
+var ReactPropTypesSecret_1 = ReactPropTypesSecret$1;
+
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+var ReactPropTypesSecret = ReactPropTypesSecret_1;
 
 function emptyFunction() {}
 function emptyFunctionWithReset() {}
@@ -933,7 +938,7 @@ emptyFunctionWithReset.resetWarningCache = emptyFunction;
 
 var factoryWithThrowingShims = function() {
   function shim(props, propName, componentName, location, propFullName, secret) {
-    if (secret === ReactPropTypesSecret_1) {
+    if (secret === ReactPropTypesSecret) {
       // It is still safe when called from React.
       return;
     }
@@ -986,13 +991,13 @@ var factoryWithThrowingShims = function() {
  * LICENSE file in the root directory of this source tree.
  */
 
-var propTypes = createCommonjsModule(function (module) {
 {
   // By explicitly using `prop-types` you are opting into new production behavior.
   // http://fb.me/prop-types-in-prod
-  module.exports = factoryWithThrowingShims();
+  propTypes.exports = factoryWithThrowingShims();
 }
-});
+
+var PropTypes = propTypes.exports;
 
 function makeBlob(_x) {
   return _makeBlob.apply(this, arguments);
@@ -1062,12 +1067,14 @@ var DownloadIcon = (({
   d: "M15.27 23.707c.389.385 1.04.389 1.429 0l6.999-6.9a.993.993 0 000-1.414 1.016 1.016 0 00-1.428 0l-5.275 5.2V1c0-.552-.452-1-1.01-1s-1.01.448-1.01 1v19.593l-5.275-5.2a1.016 1.016 0 00-1.428 0 .992.992 0 000 1.414l6.998 6.9z"
 })));
 
+var _excluded = ["imageUrl", "imageTitle", "iconColor", "children"];
+
 var ImageDownloader = function ImageDownloader(_ref) {
   var imageUrl = _ref.imageUrl,
       imageTitle = _ref.imageTitle,
       iconColor = _ref.iconColor,
       children = _ref.children,
-      restProps = _objectWithoutProperties(_ref, ["imageUrl", "imageTitle", "iconColor", "children"]);
+      restProps = _objectWithoutProperties(_ref, _excluded);
 
   var _React$useState = React.useState(),
       _React$useState2 = _slicedToArray(_React$useState, 2),
@@ -1149,19 +1156,19 @@ var ImageDownloader = function ImageDownloader(_ref) {
 
 ImageDownloader.propTypes = {
   /** URL of image to download */
-  imageUrl: propTypes.string.isRequired,
+  imageUrl: PropTypes.string.isRequired,
 
   /** File name for download .jpeg */
-  imageTitle: propTypes.string.isRequired,
+  imageTitle: PropTypes.string.isRequired,
 
   /** Hex color value for download and loading icons */
-  iconColor: propTypes.string,
+  iconColor: PropTypes.string,
 
   /** Inline CSS styling */
-  style: propTypes.object,
+  style: PropTypes.object,
 
   /** Button content (typically this would just be label text) */
-  children: propTypes.node
+  children: PropTypes.node
 };
 ImageDownloader.defaultProps = {
   iconColor: "#333",
