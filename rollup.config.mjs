@@ -1,9 +1,9 @@
-import resolve from "@rollup/plugin-node-resolve";
+import { nodeResolve } from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import babel from "@rollup/plugin-babel";
 import cleaner from "rollup-plugin-cleaner";
 import replace from "@rollup/plugin-replace";
-import pkg from "./package.json";
+import pkg from "./package.json" assert { type: "json" };
 import { terser } from "rollup-plugin-terser";
 import reactSvg from "rollup-plugin-react-svg";
 
@@ -48,7 +48,7 @@ let productionRollup = {
       preventAssignment: true,
       "process.env.NODE_ENV": JSON.stringify(NODE_ENV),
     }),
-    resolve(),
+    nodeResolve(),
     commonjs(),
   ],
 };
