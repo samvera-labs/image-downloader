@@ -9,8 +9,6 @@ Install the package:
 ```
 npm install @samvera/image-downloader
 
-// or yarn
-yarn add @samvera/image-downloader
 ```
 
 ## Useage

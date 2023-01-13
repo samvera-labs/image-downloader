@@ -23,7 +23,7 @@ import mimicDownload from "../../lib/mimic-download";
 var url =
   "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/8f7bf326-e71d-4b6f-abb8-f6a40f412883/full/3000,/0/default.jpg";
 
-<VanillaJS>
+<PlainJavaScript>
   <button
     // In a vanilla JS implementation, you'd replace "onClick" below
     onClick={async () => {
@@ -37,5 +37,5 @@ var url =
   >
     Download using vanilla JS exports only
   </button>
-</VanillaJS>;
+</PlainJavaScript>;
 ```
