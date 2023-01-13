@@ -58,8 +58,8 @@
     "svg-loaders-react": "^2.2.1"
   },
   "peerDependencies": {
-    "react": "^17.0.0",
-    "react-dom": "^17.0.0"
+    "react": "^16.13.1  || ^17 || ^18",
+    "react-dom": "^16.13.1  || ^17 || ^18"
   },
   "browserslist": [
     ">0.25%",
