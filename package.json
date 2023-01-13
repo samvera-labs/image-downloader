@@ -1,6 +1,6 @@
 {
   "name": "@samvera/image-downloader",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "description": "React component and JavaScript modules to help force an image download in the browser",
   "main": "dist/image-downloader.cjs.js",
   "module": "dist/image-downloader.esm.js",
