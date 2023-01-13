@@ -25,9 +25,10 @@ var url =
 
 <PlainJavaScript>
   <button
-    // In a vanilla JS implementation, you'd replace "onClick" below
     onClick={async () => {
       let response = await makeBlob(url);
+
+      // Handle any errors
       if (!response || response.error) {
         alert("Error fetching the image");
         return;
@@ -35,7 +36,7 @@ var url =
       mimicDownload(response, "your-jpg-title");
     }}
   >
-    Download using vanilla JS exports only
+    Download me
   </button>
 </PlainJavaScript>;
 ```

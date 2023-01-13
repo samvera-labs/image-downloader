@@ -6,7 +6,7 @@ JavaScript modules and a convenience React component which will force a jpeg dow
 
 Install the package:
 
-```
+```bash
 npm install @samvera/image-downloader
 
 ```
@@ -15,8 +15,30 @@ npm install @samvera/image-downloader
 
 Import JavaScript modules into your project to use directly:
 
-```
+```jsx
 import { makeBlob, mimicDownload } from "@samvera/image-downloader";
+
+var url =
+  "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/8f7bf326-e71d-4b6f-abb8-f6a40f412883/full/3000,/0/default.jpg";
+
+// HTML or JSX file
+<button
+  onClick={async () => {
+    let response = await makeBlob(url);
+
+    // Handle any errors
+    if (!response || response.error) {
+      // Customize this for your app
+      alert("Error fetching the image");
+
+      return;
+    }
+
+    mimicDownload(response, "your-jpg-title");
+  }}
+>
+  Download me
+</button>;
 ```
 
 or...
@@ -25,7 +47,7 @@ or...
 
 If importing into a React project, you can import the component directly:
 
-```
+```jsx
 import { ImageDownloader } from "@samvera/image-downloader";
 
 <ImageDownloader
@@ -33,7 +55,7 @@ import { ImageDownloader } from "@samvera/image-downloader";
   imageTitle={`Beautiful image`}
 >
   Download JPEG
-</ImageDownloader>
+</ImageDownloader>;
 ```
 
 For complete `props` and usage examples, [view the docs](https://samvera-labs.github.io/image-downloader/)
