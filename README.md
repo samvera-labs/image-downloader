@@ -11,7 +11,7 @@ npm install @samvera/image-downloader
 
 ```
 
-## Useage
+## Usage
 
 Import JavaScript modules into your project to use directly:
 
@@ -41,7 +41,13 @@ var url =
 </button>;
 ```
 
-or...
+### Customizing makeBlob() requests
+
+The `makeBlob()` function utilizes [fetch()](https://developer.mozilla.org/en-US/docs/Web/API/fetch) for requests. You can chose to customize the `options` object.
+
+```js
+makeBlob(url, { credentials: "include" });
+```
 
 ### React
 
