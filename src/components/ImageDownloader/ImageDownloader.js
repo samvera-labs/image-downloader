@@ -10,6 +10,7 @@ const ImageDownloader = ({
   imageTitle,
   iconColor,
   children,
+  imageUrlOptions,
   ...restProps
 }) => {
   const [loading, setLoading] = React.useState();
@@ -19,7 +20,7 @@ const ImageDownloader = ({
     setLoading(true);
     setError(null);
 
-    const response = await makeBlob(imageUrl);
+    const response = await makeBlob(imageUrl, imageUrlOptions);
 
     // Handle error
     if (!response || response.error) {
